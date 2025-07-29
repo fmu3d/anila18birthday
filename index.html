@@ -16,29 +16,25 @@
     html, body {
       height: 100%;
       scroll-behavior: smooth;
+      background: linear-gradient(to bottom, #1f1f1f, #2c2c2c);
+      font-family: 'Open Sans', sans-serif;
+      color: #f8f8f8;
     }
 
     body {
-      font-family: 'Open Sans', sans-serif;
-      background: linear-gradient(to bottom, #1f1f1f, #2c2c2c);
-      color: #f8f8f8;
-      display: flex;
-      justify-content: center;
-      align-items: start;
+      overflow-y: auto;
       padding: 30px 20px;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
     }
 
     .container {
       max-width: 600px;
+      margin: 0 auto;
       background-color: #121212;
       padding: 25px;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
-      z-index: 2;
       position: relative;
+      z-index: 2;
     }
 
     h1 {
@@ -54,9 +50,8 @@
       line-height: 1.8;
       white-space: pre-wrap;
       text-align: left;
-      min-height: 300px;
-      color: #f2f2f2;
       overflow-wrap: break-word;
+      padding-bottom: 100px; /* Space to scroll fully */
     }
 
     .footer {
@@ -151,7 +146,7 @@
   <div class="rose rose2">🌹</div>
   <div class="rose rose3">🌹</div>
 
-  <!-- Typing Animation -->
+  <!-- Typing Animation with auto-scroll -->
   <script>
     const text = `
 I clearly don’t know how to express how much I love you and care for you.  
@@ -207,8 +202,8 @@ Mwaaah baby, I love you sooooooooooo much. ❤️‍🩹🌹❤️‍🔥💋
       if (index < text.length) {
         target.innerHTML += text.charAt(index);
         index++;
-        setTimeout(typeWriter, 30); // Typing speed
-        window.scrollTo(0, document.body.scrollHeight); // Force scroll down as it types
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        setTimeout(typeWriter, 30);
       }
     }
     typeWriter();
